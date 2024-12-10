@@ -1,5 +1,6 @@
 const initialState = {
     count: 0,
+    profilePhoto: null,
 };
 
 const counterReducer = (state = initialState, action) => {
@@ -10,6 +11,8 @@ const counterReducer = (state = initialState, action) => {
             return { ...state, count: state.count - 1 };
         case 'INCREMENT_BY_X':
             return { ...state, count: state.count + action.payload };
+        case 'SET_PROFILE_PHOTO':
+            return { ...state, profilePhoto: action.payload };
         default:
             return state;
     }
