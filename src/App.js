@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './App.css';
 import Child from './Child';
-import Profile from './Profile';
 import { decrement, increment, incrementByX } from './redux/actions/counterActions';
 
 function App() {
@@ -16,8 +16,9 @@ function App() {
       <button onClick={() => dispatch(decrement())}>Decrement</button>
       <button onClick={() => dispatch(incrementByX(Math.floor(Math.random() * 100)))}>Increment by 100</button>
       <Child />
-      <hr />
-      <Profile />
+      <Link to="/profile">
+        <div>Go to Profile</div>
+      </Link>
     </div>
   );
 }

@@ -18,6 +18,7 @@
 
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { updateEmail } from "./redux/actions/profileActions";
 
 function Profile() {
@@ -32,6 +33,9 @@ function Profile() {
                 value={email}
                 onChange={(e) => dispatch(updateEmail(e.target.value))}
             />
+            <Link to="/">
+                <div>Go to Home</div>
+            </Link>
         </div>
     );
 }
