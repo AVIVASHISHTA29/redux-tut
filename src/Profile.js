@@ -16,14 +16,21 @@
 
 // export default Profile
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchData } from "./redux/actions/dataActions";
 import { updateEmail } from "./redux/actions/profileActions";
 
 function Profile() {
     const email = useSelector((state) => state.profile.email);
+    const { loading, data } = useSelector((state) => state.data);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchData(2));
+    }, [dispatch]);
+
 
     return (
         <div>
@@ -36,6 +43,7 @@ function Profile() {
             <Link to="/">
                 <div>Go to Home</div>
             </Link>
+            {loading ? <h1>Loading Has Started...</h1> : data ? <h1>Data Has been fetched</h1> : null}
         </div>
     );
 }

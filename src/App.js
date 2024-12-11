@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './App.css';
 import Child from './Child';
 import { decrement, increment, incrementByX } from './redux/actions/counterActions';
+import { fetchData } from './redux/actions/dataActions';
 
 function App() {
   const { count, numberOfClicks } = useSelector((state) => state.counter);
@@ -15,6 +16,7 @@ function App() {
       <button onClick={() => dispatch(increment())}>Increment</button>
       <button onClick={() => dispatch(decrement())}>Decrement</button>
       <button onClick={() => dispatch(incrementByX(Math.floor(Math.random() * 100)))}>Increment by 100</button>
+      <button onClick={() => dispatch(fetchData(1))}>Fetch Data</button>
       <Child />
       <Link to="/profile">
         <div>Go to Profile</div>

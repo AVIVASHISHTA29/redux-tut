@@ -3,6 +3,9 @@ const initialState = {
     phone: "",
     profilePhoto: "",
     name: "",
+    profileLoading: false,
+    profileError: null,
+    profileData: null,
 }
 
 const profileReducer = (state = initialState, action) => {
