@@ -6,3 +6,5 @@ export const PERSONAL_ACTIONS = {
 
 export const bookmark = (book) => ({ type: PERSONAL_ACTIONS.BOOKMARK_BOOK, payload: book })
 export const unbookmark = (id) => ({ type: PERSONAL_ACTIONS.UNBOOKMARK_BOOK, payload: id })
+
+export const setSearch = (search) => ({ type: "SET_SEARCH", payload: search })

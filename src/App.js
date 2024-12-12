@@ -1,15 +1,16 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 import Book from "./components/Book";
 import { searchBooks } from "./redux/actions/bookActions";
+import { setSearch } from "./redux/actions/personalActions";
 
 function App() {
   const navigate = useNavigate();
   const { books } = useSelector((state) => state.book);
   const dispatch = useDispatch();
-  const [search, setSearch] = useState("");
+  const { search } = useSelector((state) => state.personal);
+
 
   const searchFnc = () => {
     dispatch(searchBooks(search));
@@ -22,7 +23,7 @@ function App() {
         type="text"
         placeholder="Search"
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => dispatch(setSearch(e.target.value))}
       />
       <button onClick={searchFnc}>Search</button>
 
