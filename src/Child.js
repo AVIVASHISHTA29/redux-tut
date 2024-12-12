@@ -18,7 +18,6 @@ function Child() {
     return (
         <div>
             <h1>Child:{count}</h1>
-            <img src={profilePhoto} alt="profile" />
             <h1>Email From Redux: {email}</h1>
             <h1>Data From Redux: {JSON.stringify(data)}</h1>
         </div>

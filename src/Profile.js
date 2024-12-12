@@ -28,8 +28,10 @@ function Profile() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchData(2));
-    }, [dispatch]);
+        if (!data) {
+            dispatch(fetchData(2));
+        }
+    }, [data]);
 
 
     return (

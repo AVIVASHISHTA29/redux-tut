@@ -15,7 +15,7 @@ function App() {
       <h1> Number of Clicks : {numberOfClicks}</h1>
       <button onClick={() => dispatch(increment())}>Increment</button>
       <button onClick={() => dispatch(decrement())}>Decrement</button>
-      <button onClick={() => dispatch(incrementByX(Math.floor(Math.random() * 100)))}>Increment by 100</button>
+      <button onClick={() => dispatch(incrementByX(Math.floor(Math.random() * 100)))}>Increment by X</button>
       <button onClick={() => dispatch(fetchData(1))}>Fetch Data</button>
       <Child />
       <Link to="/profile">
