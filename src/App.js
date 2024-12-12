@@ -1,30 +1,38 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import './App.css';
-import Child from './Child';
-import { decrement, increment, incrementByX } from './redux/actions/counterActions';
-import { fetchData } from './redux/actions/dataActions';
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import "./App.css";
+import Book from "./components/Book";
+import { searchBooks } from "./redux/actions/bookActions";
 
 function App() {
-  const { count, numberOfClicks } = useSelector((state) => state.counter);
+  const navigate = useNavigate();
+  const { books } = useSelector((state) => state.book);
   const dispatch = useDispatch();
+  const [search, setSearch] = useState("");
+
+  const searchFnc = () => {
+    dispatch(searchBooks(search));
+  };
 
   return (
     <div className="App">
-      <h1> Counter : {count}</h1>
-      <h1> Number of Clicks : {numberOfClicks}</h1>
-      <button onClick={() => dispatch(increment())}>Increment</button>
-      <button onClick={() => dispatch(decrement())}>Decrement</button>
-      <button onClick={() => dispatch(incrementByX(Math.floor(Math.random() * 100)))}>Increment by X</button>
-      <button onClick={() => dispatch(fetchData(1))}>Fetch Data</button>
-      <Child />
-      <Link to="/profile">
-        <div>Go to Profile</div>
-      </Link>
+      <button onClick={() => navigate("/saved-books")}>Go To Saved Books</button>
+      <input
+        type="text"
+        placeholder="Search"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+      <button onClick={searchFnc}>Search</button>
+
+      {books.loading && <p>Loading...</p>}
+      {books.error && <p>Error: {books.error}</p>}
+      {books?.data?.map((book) => (
+        <Book book={book} />
+      ))}
     </div>
   );
 }
 
 export default App;
-
-// store.js - Global Storage - Single Source of Truth

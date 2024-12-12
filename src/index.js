@@ -4,8 +4,8 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import App from "./App";
 import "./index.css";
-import Profile from "./Profile";
 import store from "./redux/store";
+import SavedBooks from "./SavedBooks";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,7 +13,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}></Route>
-        <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/saved-books" element={<SavedBooks />}></Route>
       </Routes>
     </BrowserRouter>
   </Provider>

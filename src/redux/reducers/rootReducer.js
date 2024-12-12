@@ -1,12 +1,10 @@
 import { combineReducers } from "redux";
-import counterReducer from "./counterReducer";
-import dataReducer from "./dataReducer";
-import profileReducer from "./profileReducer";
+import bookReducer from "./bookReducer";
+import personalReducer from "./personalReducer";
 
 const rootReducer = combineReducers({
-    counter: counterReducer,
-    profile: profileReducer,
-    data: dataReducer,
+    book: bookReducer,
+    personal: personalReducer,
 });
 
 export default rootReducer;
