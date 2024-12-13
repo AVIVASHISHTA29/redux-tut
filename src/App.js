@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 import Book from "./components/Book";
+import { RocketBulletPoint, SearchButton, StarBulletPoint } from "./components/Button";
 import { searchBooks } from "./redux/actions/bookActions";
 import { setSearch } from "./redux/actions/personalActions";
 
@@ -11,21 +12,39 @@ function App() {
   const dispatch = useDispatch();
   const { search } = useSelector((state) => state.personal);
 
-
   const searchFnc = () => {
     dispatch(searchBooks(search));
   };
 
   return (
     <div className="App">
-      <button onClick={() => navigate("/saved-books")}>Go To Saved Books</button>
+      <button onClick={() => navigate("/saved-books")}>
+        Go To Saved Books
+      </button>
       <input
         type="text"
         placeholder="Search"
         value={search}
         onChange={(e) => dispatch(setSearch(e.target.value))}
       />
-      <button onClick={searchFnc}>Search</button>
+
+      {/* <Button
+        title="Search"
+        onClick={searchFnc}
+        style={{ backgroundColor: "red", color: "white" }}
+      /> */}
+
+      <SearchButton
+        title="Search"
+        onClick={searchFnc}
+        style={{ backgroundColor: "red", color: "white" }}
+      />
+
+      <StarBulletPoint title="Kalyan is a good student" />
+      <StarBulletPoint title="Aditya is a good student" />
+      <StarBulletPoint title="Adarsh is a good student" />
+
+      <RocketBulletPoint title="Hi" />
 
       {books.loading && <p>Loading...</p>}
       {books.error && <p>Error: {books.error}</p>}
