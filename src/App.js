@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./App.css";
 import Book from "./components/Book";
 import { RocketBulletPoint, SearchButton, StarBulletPoint } from "./components/Button";
+import { Card, Card2 } from "./components/Render";
 import { searchBooks } from "./redux/actions/bookActions";
 import { setSearch } from "./redux/actions/personalActions";
 
@@ -52,6 +53,9 @@ function App() {
       {books?.data?.map((book) => (
         <Book book={book} />
       ))}
+
+      <Card heading="Heading" desc="Desc" date="2024-01-01" />
+      <Card2 heading="Heading 2" desc="Desc 2" date="2024-01-01" />
     </div>
   );
 }
