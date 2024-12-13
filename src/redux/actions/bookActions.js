@@ -15,7 +15,7 @@ export const searchBooks = (query) => {
         dispatch({ type: BOOK_ACTIONS.ALL_BOOKS_PENDING });
         try {
             const { data } = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}`);
-            dispatch({ type: BOOK_ACTIONS.ALL_BOOKS_SUCCESS, payload: data.items })
+            dispatch({ type: BOOK_ACTIONS.ALL_BOOKS_SUCCESS, payload: data })
         } catch (e) {
             console.log("error>>>", e);
             dispatch({ type: BOOK_ACTIONS.ALL_BOOKS_ERROR, payload: e.message });

@@ -2,6 +2,7 @@ import { BOOK_ACTIONS } from "../actions/bookActions";
 
 const initialState = {
     books: {
+        totalItems: 0,
         data: [],
         loading: false,
         error: null,
@@ -17,12 +18,13 @@ const bookReducer = (state = initialState, action) => {
     switch (action.type) {
         // All Books
         case BOOK_ACTIONS.ALL_BOOKS_PENDING:
-            return { ...state, books: { data: [], loading: true, error: null } };
+            return { ...state, books: { totalItems: 0, data: [], loading: true, error: null } };
         case BOOK_ACTIONS.ALL_BOOKS_SUCCESS:
             return {
                 ...state,
                 books: {
-                    data: action.payload,
+                    totalItems: action.payload.totalItems,
+                    data: action.payload.items,
                     loading: false,
                     error: null,
                 },
@@ -30,7 +32,7 @@ const bookReducer = (state = initialState, action) => {
         case BOOK_ACTIONS.ALL_BOOKS_ERROR:
             return {
                 ...state,
-                books: { data: [], loading: false, error: action.payload },
+                books: { totalItems: 0, data: [], loading: false, error: action.payload },
             };
         // Suggested Books
         case BOOK_ACTIONS.SUGGESTED_BOOKS_PENDING:

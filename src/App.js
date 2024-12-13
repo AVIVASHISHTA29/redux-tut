@@ -29,6 +29,7 @@ function App() {
 
       {books.loading && <p>Loading...</p>}
       {books.error && <p>Error: {books.error}</p>}
+      <h1>Total Items: {books.totalItems}</h1>
       {books?.data?.map((book) => (
         <Book book={book} />
       ))}
