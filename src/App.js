@@ -1,11 +1,21 @@
+import React, { useState } from 'react';
 import "./App.css";
+import ChatRoom from './components/ChatRoom';
+import JoinRoom from './components/JoinRoom';
 
-function App() {
+const App = () => {
+  const [joined, setJoined] = useState(false);
+
   return (
-    <div className="App">
-      <h1>Hello World</h1>
+    <div>
+      <h1>Real-Time Group Chat</h1>
+      {!joined ? (
+        <JoinRoom onJoin={() => setJoined(true)} />
+      ) : (
+        <ChatRoom />
+      )}
     </div>
   );
-}
+};
 
 export default App;
