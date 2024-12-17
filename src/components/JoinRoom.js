@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUsername } from '../redux/actions/chatActions';
 
-const JoinRoom = ({ onJoin }) => {
+const JoinRoom = ({ onJoin, socket }) => {
     const [username, setLocalUsername] = useState('');
     const dispatch = useDispatch();
 
     const handleJoin = () => {
         if (username.trim()) {
+            socket.emit('join_chat', username);
             dispatch(setUsername(username));
             onJoin();
         }
